@@ -8,7 +8,7 @@
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
     "deploy": "npm run docs:build && npm run docs:deploy",
-    "deploy:gh": "gh-pages -d dist",
+    "deploy:gh": "gh-pages -d docs-dist",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
@@ -29,11 +29,11 @@
     ]
   },
   "dependencies": {
+    "antd": "^4.10.2",
     "react": "^16.12.0"
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",
-    "antd": "^4.10.2",
     "dumi": "^1.0.10",
     "dumi-theme-mobile": "^1.0.0",
     "father-build": "^1.17.2",

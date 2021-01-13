@@ -1,4 +1,4 @@
 import React from 'react';
-// import { Button } from 'antd'
+import { Button } from 'antd'
 
-export default ({ title }: { title: string }) => <button>我是antd的按钮1</button>;
+export default ({ title }: { title: string }) => <Button type="primary">我是antd的按钮1</Button>;;

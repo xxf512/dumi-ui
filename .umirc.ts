@@ -24,7 +24,7 @@ export default defineConfig({
       'import',
       {
         libraryName: 'antd',
-        // libraryDirectory: 'es',
+        libraryDirectory: 'es',
         style: true,
       },
       'antd',
