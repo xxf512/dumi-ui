@@ -29,5 +29,14 @@ export default defineConfig({
       },
       'antd',
     ],
+    [
+      'import',
+      {
+        libraryName: 'antd-mobile',
+        libraryDirectory: 'es',
+        style: true,
+      },
+      'antd-mobile',
+    ],
   ]
 });
