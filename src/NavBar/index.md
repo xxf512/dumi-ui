@@ -5,7 +5,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { NavBar } from 'myTestApp';
+import { NavBar } from 'frf';
 
 export default () => (
   <NavBar

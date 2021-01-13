@@ -5,7 +5,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { MyButton } from 'myTestApp';
+import { MyButton } from 'frf';
 
 export default () => <MyButton title="First Demo" />;
 ```
