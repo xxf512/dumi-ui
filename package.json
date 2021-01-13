@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "name": "inke-design-mobile",
+  "name": "frf",
   "version": "1.0.0",
   "scripts": {
     "start": "dumi dev",
