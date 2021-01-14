@@ -3,7 +3,6 @@ import React, { memo, useState, useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { createBrowserHistory } from 'history'
 import { Icon } from 'antd-mobile'
-
 import './index.less'
 /**
  * 类名命名,返回函数cx(),支持数组
@@ -27,21 +26,51 @@ Object.defineProperty(document, 'title', { // 响应式同步更改文档的titl
   }
 })
 
-
-type propsType = typeof defaultProps & {
+export interface propsType {
+   /**
+   * @description 导航栏标题
+   * @type React.ReactNode | string
+   * @default 网页标题
+   */
   title: React.ReactNode | string,
-  color: string,
-  bgColor: string,
-  customClass: string,
-  customStyle: object,
-  rightContent: React.ReactNode | string,
+  /**
+   * @description 导航栏字体颜色
+   * @default #000
+   */
+  color?: string,
+  /**
+   * @description 导航栏背景颜色
+   * @default #fff
+   */
+  bgColor?: string,
+  /**
+   * @description 自定义类名
+   */
+  customClass?: string,
+  /**
+   * @description 自定义行类样式
+   * @default {}
+   */
+  customStyle?: object,
+  /**
+   * @description 右侧内容
+   * @type React.ReactNode | string
+   */
+  rightContent?: React.ReactNode | string,
+  /**
+   * @description 左侧h5关闭回调 需要bridge实现功能
+   */
   closeWebFunc: Function,
-  onBackClick: Function,
-  children: React.ReactNode
+  /**
+   * @description 回退回调
+   */
+  onBackClick?: Function,
 }
 
 // 自定义导航栏的组件，回退调用history的goback，若history.length为零，则调用bridge的关闭页面
-const NavBar = memo(({ title, color, bgColor, customClass, rightContent, customStyle = {}, children, closeWebFunc, onBackClick }: propsType) => {
+const NavBar: React.FC<propsType> = memo(({
+  title, color = '#000', bgColor = '#fff', customClass = '', rightContent = '', customStyle = {}, children, closeWebFunc, onBackClick
+  }) => {
   const cs = customClass && classFix(customClass)
   const [newTitle, setTitle] = useState<any>('')
   document.body.style.overflow = 'hidden'
@@ -78,24 +107,5 @@ const NavBar = memo(({ title, color, bgColor, customClass, rightContent, customS
     }</div>
   </div>
 })
-
-// NavBar.propTypes = {
-//   title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-//   color: PropTypes.string,
-//   bgColor: PropTypes.string,
-//   customClass: PropTypes.string,
-//   customStyle: PropTypes.object,
-//   rightContent: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-//   closeWebFunc: PropTypes.func, // 需要传入关闭H5的回调方法
-//   onBackClick: PropTypes.func, // 自定义回退的方法
-// }
-
-const defaultProps = {
-  color: '#000',
-  bgColor: '#fff',
-  customClass: '',
-  rightContent: '',
-  customStyle: {}
-}
 
 export default NavBar
