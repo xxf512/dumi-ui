@@ -28,13 +28,13 @@ Object.defineProperty(document, 'title', { // 响应式同步更改文档的titl
 
 export interface propsType {
    /**
-   * @description 导航栏标题
+   * @description 标题内容
    * @type React.ReactNode | string
-   * @default 网页标题
+   * @default document.title
    */
   title: React.ReactNode | string,
   /**
-   * @description 导航栏字体颜色
+   * @description 导航栏的字体颜色
    * @default #000
    */
   color?: string,
@@ -48,23 +48,23 @@ export interface propsType {
    */
   customClass?: string,
   /**
-   * @description 自定义行类样式
+   * @description 导航栏自定义样式
    * @default {}
    */
   customStyle?: object,
   /**
-   * @description 右侧内容
+   * @description 导航右边内容
    * @type React.ReactNode | string
    */
   rightContent?: React.ReactNode | string,
   /**
-   * @description 左侧h5关闭回调 需要bridge实现功能
+   * @description 第一页点击回退调用的关闭页面的方法，必传
    */
-  closeWebFunc: Function,
+  closeWebFunc: () => void,
   /**
-   * @description 回退回调
+   * @description 回退图标的点击事件
    */
-  onBackClick?: Function,
+  onBackClick?: () => void,
 }
 
 // 自定义导航栏的组件，回退调用history的goback，若history.length为零，则调用bridge的关闭页面
