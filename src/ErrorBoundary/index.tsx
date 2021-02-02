@@ -39,7 +39,7 @@ export default class ErrorBoundary extends React.Component {
             <div className={cx('content')}>
               <div className={cx('title')}>{error.toString()}</div>
               {info &&
-                info.componentStack.split('\n').map(i => (
+                info.componentStack.split('\n').map((i: any) => (
                   <div className={cx('info')} key={i}>
                     {i}
                   </div>
