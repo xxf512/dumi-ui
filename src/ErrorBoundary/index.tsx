@@ -10,11 +10,18 @@ const ErrorPoster = '//img.ikstatic.cn/MTYxMDQzOTQ4ODM3OSM5MDgjcG5n.png';
  * @description 当render方法出错时，用于展示对应的页面，防止页面白屏
  * @usage 把根组件包裹，<ErrorBoundary><App /></ErrorBoundary>
  */
+
+interface state {
+  error: boolean;
+  info: any;
+}
+
 export default class ErrorBoundary extends React.Component {
-  state = {
+  state: state = {
     error: false,
+    info: '',
   };
-  componentDidCatch(error, info) {
+  componentDidCatch(error: any, info: any) {
     this.setState({ error, info });
   }
 

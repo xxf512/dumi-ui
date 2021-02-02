@@ -24,7 +24,7 @@ window.addEventListener('touchend', delayReset);
 const routerStack = (getLocalData('ROUTER_STACK', true) || '')
   .split(',')
   .filter(Boolean); // 路由堆栈记录
-const getClassName = location => {
+const getClassName = (location: any) => {
   if (!needAnimation) return '';
   const pathname = location.pathname.split('?')[0]; // 防止？参数影响匹配
   const index = routerStack.lastIndexOf(pathname); // 这里要找出现的最后一条记录
@@ -37,10 +37,14 @@ const getClassName = location => {
   return className;
 };
 // 给Dom添加appear类，300ms后去掉
-const appearDom = node => {
-  dom.addClass(node, 'appear');
+const appearDom = (
+  node: HTMLElement | Node,
+  key?: number,
+  parent?: NodeList,
+) => {
+  dom.addClass(node as HTMLElement, 'appear');
   setTimeout(function() {
-    dom.removeClass(node, 'appear');
+    dom.removeClass(node as HTMLElement, 'appear');
   }, 300);
 };
 
@@ -56,11 +60,11 @@ const mo = new MutationObserver(function(mutations) {
 // 增加页面出现的动画
 const addListener = () => {
   mo.disconnect();
-  const temps = document.getElementsByClassName('_temp');
+  const temps = document.getElementsByClassName('_temp') as any;
   if (temps.length === 1) {
     return appearDom(temps[0]);
   }
-  temps.forEach(node => mo.observe(node, { childList: true }));
+  temps.forEach((node: Node) => mo.observe(node, { childList: true }));
 };
 
 /**
@@ -68,12 +72,12 @@ const addListener = () => {
  * @description 解决了路由层级判断和与手机手势冲突的问题，解决懒加载的动画问题，带有简单的页面显示动效
  * @usage 在Router和Route之间，传入fallback作为Suspense的fallback
  */
-const AnimationRouter = ({ location, children, fallback }) => {
-  const tempRef = useRef();
+const AnimationRouter = ({ location, children, fallback }: any) => {
+  const tempRef = useRef<HTMLDivElement>(null);
   const classNames = getClassName(location);
   delayReset(); // 防止某些浏览器不触发touchend
   useEffect(function() {
-    mo.observe(tempRef.current, { childList: true });
+    mo.observe(tempRef.current as Node, { childList: true });
   }, []);
   return (
     <TransitionGroup
