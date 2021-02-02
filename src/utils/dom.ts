@@ -147,7 +147,7 @@ class Dom {
     return (
       window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
+      (window as any).mozRequestAnimationFrame ||
       function(callback) {
         window.setTimeout(callback, 1000 / 60);
       }
