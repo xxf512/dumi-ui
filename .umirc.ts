@@ -1,4 +1,6 @@
 import { defineConfig } from 'dumi';
+// import commonjs from 'rollup-plugin-commonjs';
+// import nodeResolve from 'rollup-plugin-node-resolve';
 
 export default defineConfig({
   base: '/dumi-ui',
